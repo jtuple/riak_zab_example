@@ -12,6 +12,7 @@ you're running within a X session and have xterm. Other scenarios are left
 as an exercise to the reader.
 
 Start four Erlang nodes running riak_zab_example:
+
      > xterm -hold -e './dev/dev1/bin/riak_zab_example console' &
      > xterm -hold -e './dev/dev2/bin/riak_zab_example console' &
      > xterm -hold -e './dev/dev3/bin/riak_zab_example console' &
@@ -40,6 +41,7 @@ the next step.
                                        'dev3@127.0.0.1','dev4@127.0.0.1']
 
 Fire up Zab on all the nodes.
+
      > ./dev/dev1/bin/riak-zab-admin zab-up
      > ./dev/dev2/bin/riak-zab-admin zab-up
      > ./dev/dev3/bin/riak-zab-admin zab-up
@@ -49,6 +51,7 @@ Assuming all goes well, you should see a few info messages on the node consoles
 that end with different ensembles successfully electing a leader. If the ring
 ended up being balanced, you should have a riak_zab state similar to the
 following.
+
      > ./dev/dev1/bin/riak-zab-admin info
      ================================ Riak Zab Info ================================
      Ring size:     64
@@ -80,6 +83,7 @@ around a bit with the command set provided by riak_zab_example. The example app
 implements a simple list based log. There is a store command that appends elements
 to a list, and a get command that retrieves the current list. In your Erlang consoles,
 you can use commands in the following form:
+
      riak_zab_util:command(100, {store, 100, 1}, riak_zabexample_vnode_master).
      riak_zab_util:command(100, {store, 100, 6}, riak_zabexample_vnode_master).
      riak_zab_util:command(200, {store, 200, 1}, riak_zabexample_vnode_master).
